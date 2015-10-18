@@ -5,6 +5,8 @@ import csv          #to read csv files
 
 __author__ = 'alanchu'
 
+########## NEXT STEP #################
+#  save each employee data as a tuple??
 
 # This function opens new file and cleans the
 # data and returns a list containing employee name, salaries, position
