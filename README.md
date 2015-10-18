@@ -4,6 +4,6 @@ As part of my first real data science project, I am hoping to learn a lot about 
 data sets. Thanks for stopping by!
 
 # Work Flow
-1.) Data cleaning of all school files #  Needs to get done with some regular expressions!
-2.) open_clean file  # uses csv reader, and returns a list of employee name, position, and salary
-3.) count_positions  # returns a sorted list of the all the employee positions
+1.) Data cleaning of all school files /n
+2.) open_clean file - returns a master list of employees (name, position, salary) /n
+3.) count_positions  # returns a sorted list of the all the employee positions /n
