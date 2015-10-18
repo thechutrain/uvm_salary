@@ -5,7 +5,9 @@ __author__ = 'alanchu'
 ################# IMPORT #######################
 from open_cleanfile import open_cleanfile  # imports open_cleanfile function
 from count_positions import count_positions  # imports open_cleanfile function
+import matplotlib.pyplot as plt
 from sumSalary import sumSalary
+import numpy as np
 from decimal import Decimal
 from re import sub
 
@@ -39,20 +41,26 @@ class SchoolYearData:
             temp_list_salaries = []
             #for loop to go through master list to find all salaries associated with an employement position
             for employee in self.employeeMasterList:
-                if (employee[1] == position):
-                    if (employee[2] != None):
-                        salary = float(employee[2])
-                        salary = "%.2f" % salary  # format the salary so it has .00
-                        # print salary
-                        # break
+                if (employee[1] == position):  # checks to see if the position for employee matches current position dic
+                    if (employee[2] != None):   #  this excludes employees with unpaid leave etc.
+                        salary = int(employee[2])
+                        # salary = float(employee[2])
+                        # salary = "%.2f" % salary  # format the salary so it has .00
                     temp_list_salaries.append(salary)
                 else:
                     pass
-            self.dict_Position_listSalaries[position] = temp_list_salaries
+            self.dict_Position_listSalaries[position] = np.asarray(temp_list_salaries)
+            # print type(self.dict_Position_listSalaries[position])
+            # break
             # self.dict_Position_listSalaries[position + year] = temp_list_salaries  # to specify year
-        # return self.dict_Position_listSalaries
+        return self.dict_Position_listSalaries
 
     # def makeBoxPlot(self):
+    #     for x in self.dict_Position_listSalaries:
+    #         print "This is the box plot for: ", x
+    #         data = self.dict_Position_listSalaries[x]
+    #         plt.boxplot(data)
+    #         break
 
 
 # class EmployeePosition:
@@ -72,6 +80,23 @@ e = SchoolYearData(2015, "uvmSalary15.csv")
 # print "total count of employees", e.uniquePositionsCount
 # print "get total salaries of all employees at UVM", e.totalSalary
 # print "average salary of UVM employee: ", e.averageSalary()
-pprint.pprint(e.getAllSalariesPosition())
+# pprint.pprint(e.getAllSalariesPosition())
+dict_of_pos_vs_salaryList = e.getAllSalariesPosition()
+
+for x in dict_of_pos_vs_salaryList:
+    print "this is the box plot for: ", x
+    data = dict_of_pos_vs_salaryList[x]
+    plt.boxplot(data)
+    plt.show()
+    break
+
+    #     for x in self.dict_Position_listSalaries:
+    #         print "This is the box plot for: ", x
+    #         data = self.dict_Position_listSalaries[x]
+    #         plt.boxplot(data)
+    #         break
+
+# e.makeBoxPlot()
+
 
 
