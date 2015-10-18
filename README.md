@@ -4,6 +4,6 @@ As part of my first real data science project, I am hoping to learn a lot about 
 data sets. Thanks for stopping by!
 
 # Work Flow
-1.) Data cleaning of all school files /n
-2.) open_clean file - returns a master list of employees (name, position, salary) /n
-3.) count_positions  # returns a sorted list of the all the employee positions /n
+1.) Data cleaning of all school files <br />
+2.) open_clean file - returns a master list of employees (name, position, salary) <br />
+3.) count_positions  # returns a sorted list of the all the employee positions <br />
