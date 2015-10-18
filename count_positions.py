@@ -44,4 +44,4 @@ clean_employee_list = open_cleanfile("uvmSalary15.csv")
 sorted_position_list = count_positions(clean_employee_list, "a")
 # see how many unique positions there are
 # print type(sorted_position_list)
-print "This is how many unique positions of employement there are at UVM: ", len(sorted_position_list)
+print "This is how many unique positions of employment there are at UVM: ", len(sorted_position_list)
