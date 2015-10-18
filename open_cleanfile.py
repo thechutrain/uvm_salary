@@ -2,6 +2,8 @@
 import pprint       #to print things pretty
 import sys          #  to determine what version python is running
 import csv          #to read csv files
+from decimal import Decimal
+from re import sub
 
 __author__ = 'alanchu'
 
@@ -23,6 +25,10 @@ def open_cleanfile(filename):
                 e = []  # temporary employee row, holds employee data
                 for i in row:
                     e.append(i)
+                try:
+                    e[2] = Decimal(sub(r'[^\d.]', '', e[2]))
+                except:
+                    e[2] = None #  for unpaid leave employees
                 employee_list.append(e)  # add employee row data to master list of all employees
         finally:  # assumes you opened the finally, b/c no IOError, so close file!
             # pprint.pprint(employee_list)
@@ -35,7 +41,12 @@ def open_cleanfile(filename):
 # call function
 
 # pprint.pprint(open_cleanfile("uvm_employee_salary_project/uvmSalary15.csv"))  # this file in wrong directory, can't change!
-#open_cleanfile("uvm_employee_salary_project/uvmSalary15.csv")
+employee_list = open_cleanfile("uvm_employee_salary_project/uvmSalary15.csv")
+# for e in employee_list:
+#     if (e[2] == None):
+#         print e[0]
+
+# pprint.pprint(employee_list)
 
 ############################# DEBUGGING   ########################
 # import os
