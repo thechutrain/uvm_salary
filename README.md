@@ -5,8 +5,8 @@ data sets. Thanks for stopping by!
 
 # Work Flow
 1.) Data cleaning of all school files <br />
-2.) open_clean file - returns a master list of employees (name, position, salary) <br />
-3.) count_positions  # returns a sorted list of the all the employee positions <br />
-4*.) Create a class for EmployeePosition (flds: name, count, type, salary_list) <br />
+2.) <s>open_clean file - returns a master list of employees (name, position, salary) </s> <br />
+3.) <s> count_positions  # returns a sorted list of the all the employee positions</s> <br />
+4*.) <s> Create a class for EmployeePosition (flds: name, count, type, salary_list) </s><br />
 5.) Create class schoolYearData (flds: year_of_data, raw_file_link, clean_file_link, unique_position,
 list_of_fEmployeePosition_objects) <br />
