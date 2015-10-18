@@ -30,9 +30,9 @@ class SchoolYearData:
         return "$" + format(self.totalSalary / len(self.employeeMasterList), '.2f')  #  is a str!! includes unpaid leave staff!!
 
     def getAllSalariesPosition(self):
-        self.dict_Position_listSalaries = {}
+        self.dict_Position_listSalaries = {}  ### this contains a Dict of Position vs List_of_salaries
         for i in range(self.uniquePositionsCount):
-            position = self.uniquePositions[i][0]  # this gets the name of the position
+            position = self.uniquePositions[i][0]  # this gets the name of the position, i index, [0] element is pos.
             # print position
             year = str(self.dataYear)
             # print position + year
@@ -40,17 +40,19 @@ class SchoolYearData:
             #for loop to go through master list to find all salaries associated with an employement position
             for employee in self.employeeMasterList:
                 if (employee[1] == position):
-                    temp_list_salaries.append(employee[2])
+                    if (employee[2] != None):
+                        salary = float(employee[2])
+                        salary = "%.2f" % salary  # format the salary so it has .00
+                        # print salary
+                        # break
+                    temp_list_salaries.append(salary)
                 else:
                     pass
-            self.dict_Position_listSalaries[position + year] = temp_list_salaries
-        return self.dict_Position_listSalaries
-            # pprint.pprint(self.dict_Position_listSalaries)
-            # print len(self.dict_Position_listSalaries[position + year])
-            # break
+            self.dict_Position_listSalaries[position] = temp_list_salaries
+            # self.dict_Position_listSalaries[position + year] = temp_list_salaries  # to specify year
+        # return self.dict_Position_listSalaries
 
-            # print i
-            # break
+    # def makeBoxPlot(self):
 
 
 # class EmployeePosition:
