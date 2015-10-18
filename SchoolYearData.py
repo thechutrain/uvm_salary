@@ -16,7 +16,7 @@ import operator
 ########### Class #########
 class SchoolYearData:
     # employeeMasterList = None  #  Have a master list of each employee
-    def __init__(self, yearInt,cleanFileStr):
+    def __init__(self, yearInt, cleanFileStr):
         self.dataYear = yearInt
         self.cleanFileName = cleanFileStr
         self.employeeMasterList = open_cleanfile(self.cleanFileName)  #  list of e_list
@@ -24,24 +24,52 @@ class SchoolYearData:
         #simple stats per year
         self.uniquePositionsCount = len(self.uniquePositions)
         self.totalSalary = sumSalary(self.employeeMasterList)
+        # self.list_of_EmployeePosition = []  #  this will store all the positions & salaries
+
     def averageSalary(self):
         return "$" + format(self.totalSalary / len(self.employeeMasterList), '.2f')  #  is a str!! includes unpaid leave staff!!
-    # def convertDecimalObject(self):
-    #     self.convertedEmployeeList_Decimals = []
-    #     for employee in self.employeeMasterList:
-    #         temp_list = []
-    #         temp_list.append(employee[0])
-    #         temp_list.append(employee[1])
-    #         value = Decimal(sub(r'[^\d.]', '', employee[2]))
-    #         temp_list.append(value)
+
+    def getAllSalariesPosition(self):
+        self.dict_Position_listSalaries = {}
+        for i in range(self.uniquePositionsCount):
+            position = self.uniquePositions[i][0]  # this gets the name of the position
+            # print position
+            year = str(self.dataYear)
+            # print position + year
+            temp_list_salaries = []
+            #for loop to go through master list to find all salaries associated with an employement position
+            for employee in self.employeeMasterList:
+                if (employee[1] == position):
+                    temp_list_salaries.append(employee[2])
+                else:
+                    pass
+            self.dict_Position_listSalaries[position + year] = temp_list_salaries
+        return self.dict_Position_listSalaries
+            # pprint.pprint(self.dict_Position_listSalaries)
+            # print len(self.dict_Position_listSalaries[position + year])
+            # break
+
+            # print i
+            # break
+
+
+# class EmployeePosition:
+#     def __init__(self, yearInt, position):
+#         self.dataYear = yearInt
+#         self.employeePosition = position
+#         self.position_list = []
+#     def getAllSalariesPosition(self):
+
 
 
 
 ######### TEST ############
 e = SchoolYearData(2015, "uvmSalary15.csv")
-print "data year of this object: ", e.dataYear
-print "gets data from this clean file: ", e.cleanFileName
-print "total count of employees", e.uniquePositionsCount
-print "get total salaries of all employees at UVM", e.totalSalary
-print "average salary of UVM employee: ", e.averageSalary()
+# print "data year of this object: ", e.dataYear
+# print "gets data from this clean file: ", e.cleanFileName
+# print "total count of employees", e.uniquePositionsCount
+# print "get total salaries of all employees at UVM", e.totalSalary
+# print "average salary of UVM employee: ", e.averageSalary()
+pprint.pprint(e.getAllSalariesPosition())
+
 
