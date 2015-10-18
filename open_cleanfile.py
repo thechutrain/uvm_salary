@@ -1,5 +1,6 @@
 ############################# IMPORT #############################
 import pprint       #to print things pretty
+import sys          #  to determine what version python is running
 import csv          #to read csv files
 
 __author__ = 'alanchu'
@@ -38,3 +39,4 @@ def open_cleanfile(filename):
 # import os
 # print "hello world"
 # print os.getcwd()
+# print (sys.version)
